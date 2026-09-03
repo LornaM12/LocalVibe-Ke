@@ -30,7 +30,7 @@ export default function HeroCarousel({ slides }: { slides: Slide[] }) {
   if (!slides || slides.length === 0) return null
 
   return (
-    <div className="relative w-full h-80 rounded-xl overflow-hidden">
+    <div className="relative w-full h-48 sm:h-64 md:h-80 rounded-xl overflow-hidden">
       {slides.map((slide, index) => (
         <div
           key={slide.id}

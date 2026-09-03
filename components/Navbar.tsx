@@ -26,42 +26,43 @@ export default function Navbar({ isLoggedIn, role, fullName }: NavbarProps) {
   }
 
   return (
-    <header className="w-full flex items-center justify-between px-6 py-4 bg-white border-b">
-      <Link href="/" className="text-xl font-bold">
+    <header className="w-full flex items-center justify-between gap-2 px-4 sm:px-6 py-3 sm:py-4 bg-white border-b flex-wrap">
+      <Link href="/" className="text-lg sm:text-xl font-bold shrink-0">
         <span className="text-blue-950">LocalVibe</span>{' '}
         <span className="text-orange-500">Kenya</span>
       </Link>
 
-      <div className="flex items-center gap-3">
+      <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-end">
         <Link
           href="/plan-my-trip"
-          className="bg-blue-950 hover:bg-blue-900 text-white px-4 py-2 rounded-full text-sm font-semibold transition-colors"
+          className="bg-blue-950 hover:bg-blue-900 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap"
         >
-          + Plan New Trip
+          <span className="hidden sm:inline">+ Plan New Trip</span>
+          <span className="sm:hidden">+ Trip</span>
         </Link>
 
         {role === 'admin' && (
           <Link
             href="/admin"
-            className="bg-orange-100 text-orange-700 px-4 py-2 rounded-full text-sm font-semibold hover:bg-orange-200 transition-colors"
+            className="bg-orange-100 text-orange-700 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold hover:bg-orange-200 transition-colors"
           >
             Admin
           </Link>
         )}
 
         {isLoggedIn ? (
-          <Link href="/profile" className="p-2 rounded-full border" aria-label="Profile">
+          <Link href="/profile" className="p-2 rounded-full border shrink-0" aria-label="Profile">
             <User size={18} />
           </Link>
         ) : (
-          <Link href="/login" className="text-sm font-semibold">
+          <Link href="/login" className="text-xs sm:text-sm font-semibold whitespace-nowrap">
             Log In
           </Link>
         )}
 
         <button
           onClick={() => setCollapsed(true)}
-          className="p-2 rounded-full border"
+          className="p-2 rounded-full border shrink-0 hidden sm:block"
           aria-label="Hide navigation"
         >
           <ChevronUp size={18} />

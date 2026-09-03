@@ -29,42 +29,44 @@ export default async function AdminListingsPage() {
         </Link>
       </div>
 
-      <table className="w-full mt-6 text-sm border-t">
-        <thead>
-          <tr className="text-left text-gray-500 border-b">
-            <th className="py-2">Facility</th>
-            <th className="py-2">Location</th>
-            <th className="py-2">Cost/Night</th>
-            <th className="py-2">Status</th>
-            <th className="py-2">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {listings?.map((l) => {
-            const deleteWithId = deleteListing.bind(null, l.id)
-            return (
-              <tr key={l.id} className="border-b">
-                <td className="py-2">{l.facility_name}</td>
-                <td className="py-2">{l.location}</td>
-                <td className="py-2">{l.cost_per_night ? `KES ${l.cost_per_night}` : 'Free'}</td>
-                <td className="py-2 capitalize">{l.status}</td>
-                <td className="py-2">
-                  <div className="flex items-center gap-3">
-                    <Link
-                      href={`/admin/listings/${l.id}/edit`}
-                      className="text-gray-600 hover:text-blue-900"
-                      aria-label="Edit"
-                    >
-                      <Pencil size={16} />
-                    </Link>
-                    <DeleteButton onDelete={deleteWithId} />
-                  </div>
-                </td>
-              </tr>
-            )
-          })}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto mt-6">
+        <table className="w-full text-sm border-t min-w-[600px]">
+          <thead>
+            <tr className="text-left text-gray-500 border-b">
+              <th className="py-2">Facility</th>
+              <th className="py-2">Location</th>
+              <th className="py-2">Cost/Night</th>
+              <th className="py-2">Status</th>
+              <th className="py-2">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            {listings?.map((l) => {
+              const deleteWithId = deleteListing.bind(null, l.id)
+              return (
+                <tr key={l.id} className="border-b">
+                  <td className="py-2">{l.facility_name}</td>
+                  <td className="py-2">{l.location}</td>
+                  <td className="py-2">{l.cost_per_night ? `KES ${l.cost_per_night}` : 'Free'}</td>
+                  <td className="py-2 capitalize">{l.status}</td>
+                  <td className="py-2">
+                    <div className="flex items-center gap-3">
+                      <Link
+                        href={`/admin/listings/${l.id}/edit`}
+                        className="text-gray-600 hover:text-blue-900"
+                        aria-label="Edit"
+                      >
+                        <Pencil size={16} />
+                      </Link>
+                      <DeleteButton onDelete={deleteWithId} />
+                    </div>
+                  </td>
+                </tr>
+              )
+            })}
+          </tbody>
+        </table>
+      </div>
 
       {(!listings || listings.length === 0) && (
         <p className="text-gray-500 text-center mt-10">No listings yet.</p>
