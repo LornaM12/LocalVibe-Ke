@@ -39,8 +39,7 @@ export default function Navbar({ isLoggedIn, role, fullName }: NavbarProps) {
 
   return (
     <>
-      <header className="w-full flex items-center justify-between gap-2 px-4 sm:px-6 py-3 sm:py-4 bg-white border-b flex-wrap">
-        <div className="flex items-center gap-3">
+      <header className="w-full flex items-center justify-between gap-1 sm:gap-2 px-3 sm:px-6 py-3 sm:py-4 bg-white border-b flex-nowrap overflow-x-auto">        <div className="flex items-center gap-3">
           <button
             onClick={() => setMobileOpen(true)}
             className="md:hidden p-2 rounded-md border shrink-0"
@@ -55,19 +54,18 @@ export default function Navbar({ isLoggedIn, role, fullName }: NavbarProps) {
           </Link>
         </div>
 
-        <div className="flex items-center gap-2 sm:gap-3 flex-wrap justify-end">
+        <div className="flex items-center gap-1.5 sm:gap-3 flex-nowrap justify-end shrink-0">          
           <Link
             href="/plan-my-trip"
-            className="bg-blue-950 hover:bg-blue-900 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold transition-colors whitespace-nowrap"
+            className="bg-blue-950 hover:bg-blue-900 text-white px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-sm font-semibold transition-colors whitespace-nowrap"
           >
             <span className="hidden sm:inline">+ Plan New Trip</span>
             <span className="sm:hidden">+ Trip</span>
           </Link>
-
           {role === 'admin' && (
             <Link
               href="/admin"
-              className="bg-orange-100 text-orange-700 px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-semibold hover:bg-orange-200 transition-colors"
+              className="bg-orange-100 text-orange-700 px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-[11px] sm:text-sm font-semibold hover:bg-orange-200 transition-colors"
             >
               Admin
             </Link>
