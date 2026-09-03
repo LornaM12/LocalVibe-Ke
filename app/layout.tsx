@@ -30,7 +30,7 @@ export default async function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <Navbar isLoggedIn={!!user} role={role} fullName={fullName} />
-        <div className="flex flex-1">
+        <div className="flex flex-col md:flex-row flex-1">
           <Sidebar />
           <main className="flex-1">{children}</main>
         </div>
